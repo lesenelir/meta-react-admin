@@ -20,7 +20,8 @@ const items = [
   ]),
   getItem('创意设计', 'item2', <EditOutlined />, [
     getItem('文章列表', 'item2-sub1'),
-    getItem('富文本编辑器', 'item2-sub2')
+    getItem('文章编辑', 'item2-sub2'),
+    getItem('富文本编辑器', 'item2-sub3')
   ]),
   getItem('修改资料', 'item3', <UserOutlined />),
 ]

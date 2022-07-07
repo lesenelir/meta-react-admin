@@ -3,8 +3,9 @@
 
 body {
   /*background-color: darkseagreen;*/
-  color: #333333;
+  height: 100vh;
   font-size: 16px;
+  color: #333333;
 }
 
 a {

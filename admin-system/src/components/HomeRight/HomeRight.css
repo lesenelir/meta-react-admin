@@ -14,3 +14,9 @@
   width: 40px;
   border-radius: 8px;
 }
+
+.site-right-content {
+  height: 100vh;
+  background-color: #ffffff;
+  overflow: scroll;
+}
