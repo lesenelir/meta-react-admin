@@ -1,4 +1,5 @@
-import App from "../App"
+// import App from "../App"
+import Home from "../pages/Home/Home"
 import Loading from "../components/Loading/Loading"
 
 import {lazy, Suspense} from "react"
@@ -8,15 +9,15 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 const routerArr = [
   {
     path: '/',
-    component: App,
+    component: Home,
     children: [
-      {path: 'list', component: lazy(() => import("../pages/List"))},
-      {path: 'edit', component: lazy(() => import("../pages/Edit"))},
-      {path: 'profile', component: lazy(() => import("../pages/Profile"))}
+      {path: 'list', component: lazy(() => import("../pages/List/List"))},
+      {path: 'edit', component: lazy(() => import("../pages/Edit/Edit"))},
+      {path: 'profile', component: lazy(() => import("../pages/Profile/Profile"))}
     ]
   },
-  {path: '/login', component: lazy(() => import("../Login"))},
-  {path: '/register', component: lazy(() => import("../Register"))}
+  {path: '/login', component: lazy(() => import("../pages/Login/Login"))},
+  {path: '/register', component: lazy(() => import("../pages/Register/Register"))}
 ]
 
 
