@@ -1,4 +1,3 @@
-// import App from "../App"
 import Home from "../pages/Home/Home"
 import Loading from "../components/Loading/Loading"
 
