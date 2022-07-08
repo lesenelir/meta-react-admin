@@ -51,7 +51,7 @@ function Login(props) {
                 <Checkbox>记住我</Checkbox>
               </Form.Item>
 
-              <Form.Item className="Item">
+              <Form.Item>
                 <Link to="/register">还没账号？立即注册</Link>
               </Form.Item>
             </div>
@@ -62,27 +62,8 @@ function Login(props) {
               </Button>
             </Form.Item>
           </Form>
-
         </div>
       </div>
-
-
-
-
-
-
-
-      // <div className="login-box">
-      //   <form action="" className="login">
-      //     <p>Login</p>
-      //     <input type="text" placeholder="用户名" />
-      //     <input type="password" placeholder="密码" />
-      //     {/*<input type="radio" />记住我*/}
-      //     {/*<span><a href="!#">忘记密码</a></span>*/}
-      //     <input type="submit" className="btn" style={{marginRight: '60px'}} value="注 册" />
-      //     <input type="submit" className="btn" value="登 录" />
-      //   </form>
-      // </div>
   )
 }
 

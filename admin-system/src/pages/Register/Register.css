@@ -1,0 +1,48 @@
+.register-box {
+  height: 100vh;
+  background: url("../../assets/images/register-background.png") no-repeat center center;
+  background-size: cover;
+  background-attachment:fixed;
+}
+
+.form-box {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: 100px;
+  padding: 5px 10px;
+
+  background-color: rgba(255, 182, 193, 0.4);
+  border-radius: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.form-box p {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.form-item-link a {
+  margin-left: -250px;
+}
+
+.form-box .btn {
+  width: 30%;
+  height: 48px;
+  font-size: 29px;
+  line-height: 29px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: rgb(245,245,245);
+  background-color: rgba(238,130,238, 0.6);
+  border: 1px solid #D8BFD8;
+}
+
+.form-box .btn:hover {
+  background-color: rgba(147,112,219, .8);
+  cursor: pointer;
+}
