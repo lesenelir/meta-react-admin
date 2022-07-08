@@ -1,0 +1,33 @@
+import axios from "axios"
+
+const axiosOption = {
+  baseURL: 'http://localhost:9000/manage',
+  timeout: 5000
+}
+
+// 创建axios实例
+const instance = axios.create(axiosOption)
+
+// 请求拦截器
+instance.interceptors.request.use((config) => {
+  let token = localStorage.getItem('token')
+  if (token) {
+    config.headers = {
+      Authorization: token,
+      token: token
+    }
+  }
+  return config
+}, (err) => {
+  return Promise.reject(err)
+})
+
+// 响应拦截器
+instance.interceptors.response.use((res) => {
+  // 响应数据
+  return res.data
+}, (err) => {
+  return Promise.reject(err)
+})
+
+export default instance
