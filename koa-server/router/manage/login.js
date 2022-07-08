@@ -28,7 +28,7 @@ router.post('/', async (ctx) => {
       ctx.body = returnMsg(0, '登录成功', res)
     } else {
       // 查询后用户不存在
-      ctx.body = returnMsg(2, '用户不存在', '用户不存在，请先注册')
+      ctx.body = returnMsg(2, '登录失败', '用户不存在，请先注册')
     }
   } else {
     // 前端请求体body中有参数的错误
