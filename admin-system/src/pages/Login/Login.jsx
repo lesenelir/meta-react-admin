@@ -1,19 +1,44 @@
 import React from "react"
-import {Link} from 'react-router-dom'
-import { Button, Checkbox, Form, Input } from 'antd'
+import {Link, useNavigate} from 'react-router-dom'
+import { Button, Checkbox, Form, Input, message } from 'antd'
 
+import {LoginApi} from "../../request/api"
 import './Login.css'
 
 function Login(props) {
 
+  const navigate = useNavigate()
+
   const onFinish = (values) => {
     console.log('Success:', values)
+
+    let {username, password} = values
+
+
+    // res: {errCode: 0, message: '登录成功', data: {…}}
+    // data: [avatar: , manageToken, username]
+    LoginApi({username, password}).then((res) => {
+      console.log('11111111', res)
+      if (res.errCode === 0) {
+        message.success(res.message, 1.5)
+
+        // 保存用户信息和token
+        // 将token保存到localStorage 和 react-redux
+        localStorage.setItem('username', res.data.username)
+        localStorage.setItem('manageToken', res.data.manageToken)
+        localStorage.setItem('avatar', res.data.avatar) // 环境变量
+
+        // 跳转页面
+        setTimeout(() => {
+          navigate('/')
+        }, 1500)
+      }
+    })
   }
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo)
   }
-
 
   return (
       <div className="login-box">

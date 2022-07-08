@@ -1,15 +1,34 @@
 import React from "react"
+import {Button, Form, Input, message} from "antd"
+import {Link, useNavigate} from "react-router-dom"
 
-import {Button, Form, Input} from "antd"
-import {Link} from "react-router-dom"
-
+import {RegisterApi} from "../../request/api"
 import './Register.css'
 
 
 function Register(props) {
+  const navigate = useNavigate()
 
+  // 点击注册后的回调函数
   const onFinish = (values) => {
-    console.log('Success:', values)
+    // 获取用户名和密码
+    let {username, password, confirmPassword} = values
+
+    if (password !== confirmPassword) {
+      message.error('请输入相同的密码')
+      return
+    }
+    // 注册
+    // res - {errCode: 0, message: '注册成功', data: '注册成功'}
+    RegisterApi({username, password}).then(res => {
+      if (res.errCode === 0) {
+        message.success(res.message, 1.5)
+        // 跳转页面
+        setTimeout(() => {
+          navigate('/login')
+        })
+      }
+    })
   }
 
   const onFinishFailed = (errorInfo) => {

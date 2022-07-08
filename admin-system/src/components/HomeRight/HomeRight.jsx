@@ -1,14 +1,26 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Breadcrumb, Button, Space, Menu, Dropdown, Layout} from "antd"
 import {MenuFoldOutlined, MenuUnfoldOutlined, DownOutlined} from "@ant-design/icons"
 import {Outlet} from 'react-router-dom'
 
 import './HomeRight.css'
-import avatar from '../../assets/images/avatar.jpg'
+import defaultAvatar from '../../assets/images/avatar.jpg'
 
 const {Header, Content, Footer} = Layout
 
 function HomeRight(props) {
+  const [avatar, setAvatar] = useState(defaultAvatar)
+  const [username, setUsername] = useState('喵宝宝')
+
+  // 组件加载刷新页面才会加载 componentDidMount
+  useEffect(() => {
+    let avatar = localStorage.getItem('avatar') || defaultAvatar,
+        username = localStorage.getItem('username') || '喵宝宝'
+
+    setAvatar(avatar)
+    setUsername(username)
+  }, [])
+
 
   const menu = (
       <Menu
@@ -41,8 +53,8 @@ function HomeRight(props) {
           <Dropdown overlay={menu}>
             <a href="!#" onClick={(e) => e.preventDefault()}>
               <Space>
-                <img src={avatar} alt="" className="site-avatar"/>
-                喵宝宝
+                <img src={'http://localhost:9000/images/' + avatar} alt="" className="site-avatar"/>
+                {username}
                 <DownOutlined />
               </Space>
             </a>

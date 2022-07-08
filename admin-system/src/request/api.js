@@ -12,5 +12,6 @@ const LoginApi = (params) => {
 
 
 export {
-  RegisterApi
+  RegisterApi,
+  LoginApi
 }
