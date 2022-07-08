@@ -41,6 +41,16 @@ const dataSource = [
   }
 ]
 
+// const data = []
+// for (let i = 0; i < 10; i++) {
+//   data.push({
+//     key: i,
+//     title: <TitleComp/>,
+//     time: '2012-03-03',
+//     operation: <OperationButton/>
+//   })
+// }
+
 const columns = [
   {
     title: '标题',
