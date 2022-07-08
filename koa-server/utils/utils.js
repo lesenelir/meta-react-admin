@@ -41,7 +41,12 @@ const returnMsg = (errCode, message, data) => {
   }
 }
 
-// 数据库操作的promise封装
+/**
+ *
+ * 数据库操作promise封装
+ * @param sql
+ * @returns {Promise<unknown>}
+ */
 const queryFn = (sql) => {
   return new Promise((resolve, reject) => {
     query(sql, (err, data) => {
