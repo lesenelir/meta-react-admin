@@ -1,0 +1,51 @@
+.login-box {
+  height: 100vh;
+  background: url("../../assets/images/login-background.png") no-repeat center center;
+  background-size: cover;
+  background-attachment:fixed;
+}
+
+
+.form-box {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  margin-top: -300px;
+  margin-left: -200px;
+  padding: 5px 10px;
+
+  background-color: rgba(245, 245, 245, 0.6);
+  border-radius: 10px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.form-box p {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+.form-box .form-information {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form-box .btn {
+  width: 30%;
+  height: 48px;
+  font-size: 29px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: rgb(245,245,245);
+  background-color: #8CAFC3;
+}
+
+.form-box .btn:hover {
+  background-color: #4B687D;
+  cursor: pointer;
+  border: 1px solid silver;
+}
+
