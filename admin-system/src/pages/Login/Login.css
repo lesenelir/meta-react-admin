@@ -6,7 +6,7 @@
 }
 
 
-.form-box {
+.form-login-box {
   position: absolute;
   width: 400px;
   height: 400px;
@@ -22,18 +22,18 @@
   box-sizing: border-box;
 }
 
-.form-box p {
+.form-login-box p {
   font-size: 42px;
   font-weight: 600;
 }
 
-.form-box .form-information {
+.form-login-box .form-information {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.form-box .btn {
+.form-login-box .btn {
   width: 30%;
   height: 48px;
   font-size: 29px;
@@ -44,7 +44,7 @@
   background-color: #8CAFC3;
 }
 
-.form-box .btn:hover {
+.form-login-box .btn:hover {
   background-color: #4B687D;
   cursor: pointer;
   border: 1px solid silver;

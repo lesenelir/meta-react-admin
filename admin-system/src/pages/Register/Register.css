@@ -5,7 +5,7 @@
   background-attachment:fixed;
 }
 
-.form-box {
+.form-register-box {
   position: absolute;
   width: 400px;
   height: 400px;
@@ -21,7 +21,7 @@
   box-sizing: border-box;
 }
 
-.form-box p {
+.form-register-box p {
   font-size: 42px;
   font-weight: 600;
 }
@@ -30,7 +30,7 @@
   margin-left: -250px;
 }
 
-.form-box .btn {
+.form-register-box .btn {
   width: 30%;
   height: 48px;
   font-size: 29px;
@@ -42,7 +42,7 @@
   border: 1px solid #D8BFD8;
 }
 
-.form-box .btn:hover {
+.form-register-box .btn:hover {
   background-color: rgba(147,112,219, .8);
   cursor: pointer;
 }

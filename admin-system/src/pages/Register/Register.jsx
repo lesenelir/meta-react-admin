@@ -19,7 +19,7 @@ function Register(props) {
 
   return (
       <div className="register-box">
-        <div className="form-box">
+        <div className="form-register-box">
           <Form name="register-form" onFinish={onFinish} onFinishFailed={onFinishFailed}>
             <p>Register</p>
 

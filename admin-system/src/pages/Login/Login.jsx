@@ -17,7 +17,7 @@ function Login(props) {
 
   return (
       <div className="login-box">
-        <div className="form-box">
+        <div className="form-login-box">
           <Form name="login-form" onFinish={onFinish} onFinishFailed={onFinishFailed}>
             <p>Login</p>
 
