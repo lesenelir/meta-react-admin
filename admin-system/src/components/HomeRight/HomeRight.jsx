@@ -56,7 +56,6 @@ function HomeRight(props) {
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-right-content" style={{padding: 24, minHeight: 360}}>
-            Bill is a cat.
             <Outlet/>
           </div>
         </Content>

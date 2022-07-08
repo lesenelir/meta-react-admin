@@ -18,5 +18,5 @@
 .site-right-content {
   height: 100vh;
   background-color: #ffffff;
-  overflow: scroll;
+  overflow: auto;
 }
