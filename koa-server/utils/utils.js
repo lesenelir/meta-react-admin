@@ -16,6 +16,7 @@ const pool = mysql.createPool({
 })
 
 //对数据库进行增删改查操作的基础
+// 调用方式： query('select * from user', (srr, data) => {})
 const query = (sql, callback) => {
   pool.getConnection(function(err,connection){
     connection.query(sql, function (err,rows) {
@@ -25,11 +26,37 @@ const query = (sql, callback) => {
   })
 }
 
-// query('select * from user', (srr, data) => {})
+/**
+ *
+ * 返回信息的结构
+ * @param errCode -  0代表请求成功， 1代表参数错误 2 代表请求错误
+ * @param message - 请求结果信息
+ * @param data - 返回给前端的数据
+ */
+const returnMsg = (errCode, message, data) => {
+  return {
+    errCode: errCode || 0,
+    message: message || '',
+    data: data || {}
+  }
+}
+
+// 数据库操作的promise封装
+const queryFn = (sql) => {
+  return new Promise((resolve, reject) => {
+    query(sql, (err, data) => {
+      if (err) reject(er)
+      resolve(data)
+    })
+  })
+}
+
 
 module.exports = {
   host,
   port,
-  query
+  query,
+  returnMsg,
+  queryFn
 }
 

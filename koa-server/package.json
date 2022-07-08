@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "koa-bodyparser": "^4.3.0",
     "koa-router": "^11.0.1",
     "koa-static": "^5.0.0",
     "koa2": "^2.0.0-alpha.7",

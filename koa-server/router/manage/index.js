@@ -1,4 +1,6 @@
 const Router = require('koa-router')
+const login = require('./login')
+const register = require('./register')
 
 const router = new Router()
 
@@ -16,6 +18,10 @@ router.get('/', async (ctx) => {
   })
   ctx.body = res
 })
+
+router.use('/login', login.routes(), login.allowedMethods())
+router.use('/register', register.routes(), register.allowedMethods())
+
 
 // /manage/list
 router.get('/list', async (ctx) => {
