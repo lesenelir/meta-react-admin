@@ -6,11 +6,14 @@ import {connect} from "react-redux"
 
 import './HomeRight.css'
 import defaultAvatar from '../../assets/images/avatar.jpg'
+// 环境变量
+import {SERVER_PORT_IMG} from '../../config/index'
 
 const {Header, Content, Footer} = Layout
 
 function HomeRight(props) {
   // console.log(props)
+  console.log(process.env)
   const [avatar, setAvatar] = useState(defaultAvatar)
   const [username, setUsername] = useState('喵宝宝')
 
@@ -64,7 +67,7 @@ function HomeRight(props) {
           <Dropdown overlay={menu}>
             <a href="!#" onClick={(e) => e.preventDefault()}>
               <Space key={props.myKey}>
-                <img src={'http://localhost:9000/images/' + avatar} alt="" className="site-avatar"/>
+                <img src={SERVER_PORT_IMG + avatar} alt="" className="site-avatar"/>
                 {username}
                 <DownOutlined />
               </Space>
