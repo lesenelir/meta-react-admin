@@ -10,8 +10,7 @@ import defaultAvatar from '../../assets/images/avatar.jpg'
 const {Header, Content, Footer} = Layout
 
 function HomeRight(props) {
-  console.log(props)
-  // const {key: myKey} = props
+  // console.log(props)
   const [avatar, setAvatar] = useState(defaultAvatar)
   const [username, setUsername] = useState('喵宝宝')
 
@@ -45,7 +44,7 @@ function HomeRight(props) {
 
   const changeUsername = () => {
     // 修改localStorage中的值
-    localStorage.setItem('username', 'Jacky1')
+    localStorage.setItem('username', 'Jacky3')
     // HomeRight中的Header组件更新
     props.changeKeyFn()
   }
@@ -55,7 +54,7 @@ function HomeRight(props) {
         {/*头部由左侧button 和 右侧下拉框组成*/}
         {/*右侧 头部 有全局变量key*/}
         <button onClick={changeUsername}>修改username</button>
-        <Header key={props.myKey}  className="site-right-header">
+        <Header key={props.myKey} className="site-right-header">
           <Button
               style={{marginLeft: '12px', marginBottom: 16}}
               onClick={() => props.setCollapsed(!props.collapsed)}
@@ -64,7 +63,7 @@ function HomeRight(props) {
           </Button>
           <Dropdown overlay={menu}>
             <a href="!#" onClick={(e) => e.preventDefault()}>
-              <Space>
+              <Space key={props.myKey}>
                 <img src={'http://localhost:9000/images/' + avatar} alt="" className="site-avatar"/>
                 {username}
                 <DownOutlined />
@@ -94,7 +93,7 @@ function HomeRight(props) {
 // state映射
 const mapStateToProps = (state) => {
   return {
-    headerKey: state.key
+    myKey: state.key
   }
 }
 

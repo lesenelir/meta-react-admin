@@ -24,9 +24,9 @@ function Login(props) {
 
         // 保存用户信息和token
         // 将token保存到localStorage 和 react-redux
-        localStorage.setItem('username', res.data.username)
-        localStorage.setItem('manageToken', res.data.manageToken)
-        localStorage.setItem('avatar', res.data.avatar) // 环境变量
+        localStorage.setItem('username', res.data[0].username)
+        localStorage.setItem('manageToken', res.data[0].token)
+        localStorage.setItem('avatar', res.data[0].avatar) // 环境变量
 
         // 跳转页面
         setTimeout(() => {
