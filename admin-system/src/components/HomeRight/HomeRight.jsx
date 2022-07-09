@@ -13,7 +13,6 @@ const {Header, Content, Footer} = Layout
 
 function HomeRight(props) {
   // console.log(props)
-  console.log(process.env)
   const [avatar, setAvatar] = useState(defaultAvatar)
   const [username, setUsername] = useState('喵宝宝')
 
@@ -45,18 +44,10 @@ function HomeRight(props) {
       />
   )
 
-  const changeUsername = () => {
-    // 修改localStorage中的值
-    localStorage.setItem('username', 'Jacky3')
-    // HomeRight中的Header组件更新
-    props.changeKeyFn()
-  }
-
   return (
       <Layout className="site-right">
         {/*头部由左侧button 和 右侧下拉框组成*/}
         {/*右侧 头部 有全局变量key*/}
-        <button onClick={changeUsername}>修改username</button>
         <Header key={props.myKey} className="site-right-header">
           <Button
               style={{marginLeft: '12px', marginBottom: 16}}
@@ -101,15 +92,16 @@ const mapStateToProps = (state) => {
 }
 
 // dispatch映射
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeKeyFn() {
-      dispatch({type: 'changeKey'})
-    }
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     changeKeyFn() {
+//       dispatch({type: 'changeKey'})
+//     }
+//   }
+// }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeRight)
+// export default connect(mapStateToProps, mapDispatchToProps)(HomeRight)
+export default connect(mapStateToProps)(HomeRight)
 
 // export default HomeRight
