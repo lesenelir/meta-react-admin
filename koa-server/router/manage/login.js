@@ -12,7 +12,7 @@ router.post('/', async (ctx) => {
   if (username && password) {
     // 请求体body中参数正确
     // 查询数据库中有没有该账号
-    let sqlSearch = `select * from user where username='${username}'`,
+    let sqlSearch = `select * from user where username='${username}' and password='${password}'`,
         res = await queryFn(sqlSearch)
 
     if (res.length > 0) {

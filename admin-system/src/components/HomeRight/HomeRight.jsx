@@ -66,7 +66,7 @@ function HomeRight(props) {
           </Button>
           <Dropdown overlay={menu}>
             <a href="!#" onClick={(e) => e.preventDefault()}>
-              <Space key={props.myKey}>
+              <Space>
                 <img src={SERVER_PORT_IMG + avatar} alt="" className="site-avatar"/>
                 {username}
                 <DownOutlined />
