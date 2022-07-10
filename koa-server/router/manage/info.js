@@ -49,12 +49,11 @@ router.post('/', async (ctx) => {
 
   // 数据库修改完后 - 重新查询数据库中的用户信息返回给前端
   let res = await queryFn(sqlSearchSend)
-  ctx.body = res[0]
+  ctx.body = returnMsg(0, '修改成功', {
+    avatar: res[0].avatar,
+    token: res[0].token,
+    username: res[0].username
+  })
 })
 
-
-
-
-
 module.exports = router
-

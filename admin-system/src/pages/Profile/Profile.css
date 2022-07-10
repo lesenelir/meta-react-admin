@@ -1,0 +1,13 @@
+.profile-form-box {
+  width: 400px;
+  height: 200px;
+  /*background-color: #4B687D;*/
+}
+
+.profile-form-box p {
+  font-weight: 600;
+}
+
+.profile-form-box .btn {
+  margin-left: 335px;
+}
