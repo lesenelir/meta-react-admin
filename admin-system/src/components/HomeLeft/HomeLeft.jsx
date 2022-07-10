@@ -53,7 +53,7 @@ function HomeLeft(props) {
       key: '3',
       icon: <UserOutlined/>,
       onClick() {
-        console.log(111)
+        navigate('/profile')
       }
     },
     {
@@ -74,7 +74,6 @@ function HomeLeft(props) {
 
   // 获取当前的路由
   const location = useLocation()
-  console.log(location.pathname)
 
   // 监听路由（数据）变化，修改侧边栏当前项
   useEffect(() => {
@@ -87,6 +86,9 @@ function HomeLeft(props) {
         break
       case '/edit':
         setASideKey('2-2')
+        break
+      case '/profile':
+        setASideKey('3')
         break
       case 'namelist':
         setASideKey('4-1')

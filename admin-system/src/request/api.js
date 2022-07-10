@@ -10,8 +10,14 @@ const LoginApi = (params) => {
   return request.post('/login', params)
 }
 
+// 获取用户信息接口
+const UserInfoApi = () => {
+  return request.get('/info')
+}
+
 
 export {
   RegisterApi,
-  LoginApi
+  LoginApi,
+  UserInfoApi
 }

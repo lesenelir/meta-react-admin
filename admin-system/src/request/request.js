@@ -12,9 +12,8 @@ const instance = axios.create(axiosOption)
 instance.interceptors.request.use((config) => {
   let token = localStorage.getItem('token')
   if (token) {
-    config.headers = {
-      Authorization: token,
-      token: token
+    config.headers = { // 有token则每次请求的时给请求头带上token
+      Authorization: token
     }
   }
   return config
