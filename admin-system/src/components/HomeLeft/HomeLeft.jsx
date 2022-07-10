@@ -1,33 +1,75 @@
-import {DesktopOutlined, EditOutlined, UserOutlined} from "@ant-design/icons"
+import {DesktopOutlined, EditOutlined, UserOutlined, LockOutlined} from "@ant-design/icons"
 import React from "react"
 import logo from "../../assets/images/logo.jpg"
 import {Layout, Menu} from "antd"
+import {useNavigate} from "react-router-dom"
 
-const { Sider } = Layout
-
-function getItem(label, key, icon, children) { // 根据传入参数返回一个对象
-  return {
-    key,
-    icon,
-    children,
-    label
-  }
-}
-
-const items = [
-  getItem('首页', 'item1', <DesktopOutlined />, [
-    getItem('工作台', 'item1-sub1')
-  ]),
-  getItem('创意设计', 'item2', <EditOutlined />, [
-    getItem('文章列表', 'item2-sub1'),
-    getItem('文章编辑', 'item2-sub2'),
-    getItem('富文本编辑器', 'item2-sub3')
-  ]),
-  getItem('修改资料', 'item3', <UserOutlined />),
-]
+const {Sider} = Layout
 
 
 function HomeLeft(props) {
+  // 编程式路由导航 配合 Menu4.20.0
+  const navigate = useNavigate()
+
+  const items = [
+    {
+      label: '首页',
+      key: 'item1',
+      icon: <DesktopOutlined/>,
+      children: [
+        {
+          label: '工作台',
+          key: 'item1-sub1',
+          onClick() {
+            navigate('/')
+          }
+        }
+      ]
+    },
+    {
+      label: '创作中心',
+      key: 'item2',
+      icon: <EditOutlined/>,
+      children: [
+        {
+          label: '文章列表',
+          key: 'item2-sub1',
+          onClick() {
+            navigate('/list')
+          }
+        },
+        {
+          label: '文章编辑',
+          key: 'item2-sub2',
+          onClick() {
+            navigate('/edit')
+          }
+        }
+      ]
+    },
+    {
+      label: '修改资料',
+      key: 'item3',
+      icon: <UserOutlined/>,
+      onClick() {
+        console.log(111)
+      }
+    },
+    {
+      label: '管理员',
+      key: 'item4',
+      icon: <LockOutlined/>,
+      children: [
+        {
+          label: '小编名单',
+          key: 'item4-sub1',
+          onClick() {
+            navigate('/namelist')
+          }
+        }
+      ]
+    }
+  ]
 
   return (
       <Sider
@@ -39,10 +81,10 @@ function HomeLeft(props) {
         {/*<div className="logo" />*/}
         <div>
           <img src={logo} width="80px" alt=""/>
-          { props.collapsed ? '' : <span style={{ fontWeight: 'bold' }}>喵宝宝后台管理系统</span> }
+          {props.collapsed ? '' : <span style={{fontWeight: 'bold'}}>喵宝宝后台管理系统</span>}
         </div>
         <Menu
-            style={{ minHeight: '100vh'}}
+            style={{minHeight: '100vh'}}
             theme="light"
             defaultOpenKeys={['item1']}
             defaultSelectedKeys={['item1-sub1']}
