@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
-import {Breadcrumb, Button, Space, Menu, Dropdown, Layout} from "antd"
+import {Breadcrumb, Button, Space, Menu, Dropdown, Layout, message} from "antd"
 import {MenuFoldOutlined, MenuUnfoldOutlined, DownOutlined} from "@ant-design/icons"
-import {Outlet} from 'react-router-dom'
+import {Outlet, useNavigate} from 'react-router-dom'
 import {connect} from "react-redux"
 
 import './HomeRight.css'
@@ -15,6 +15,7 @@ function HomeRight(props) {
   // console.log(props)
   const [avatar, setAvatar] = useState(defaultAvatar)
   const [username, setUsername] = useState('喵宝宝')
+  const navigate = useNavigate()
 
   // 组件加载刷新页面才会加载 componentDidMount
   useEffect(() => {
@@ -26,12 +27,39 @@ function HomeRight(props) {
   }, [])
 
 
+  // 修改资料点击
+  const clickProfile = () => {
+    let token = localStorage.getItem('token')
+    if (token) {
+      navigate('/profile')
+    } else {
+      message.warning('登录信息失效，请重新登录', 1.5)
+      setTimeout(() => {
+        navigate('/login')
+      }, 1500)
+    }
+  }
+
+  // 退出登录
+  const logout = () => {
+    localStorage.removeItem('token')
+    localStorage.removeItem('username')
+    localStorage.removeItem('avatar')
+    message.success('退出成功', 1.5)
+    setTimeout(() => {
+      navigate('/login')
+    }, 1500)
+  }
+
+
+
   const menu = (
       <Menu
           items={[
             {
               key: '1',
               label: ( '修改资料'),
+              onClick: () => clickProfile()
             },
             {
               type: 'divider',
@@ -39,6 +67,7 @@ function HomeRight(props) {
             {
               key: '2',
               label: ( '退出登录'),
+              onClick: () => logout()
             }
           ]}
       />
