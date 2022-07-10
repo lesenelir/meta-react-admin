@@ -52,7 +52,6 @@ function HomeRight(props) {
   }
 
 
-
   const menu = (
       <Menu
           items={[
