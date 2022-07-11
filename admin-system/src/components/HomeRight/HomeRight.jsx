@@ -28,12 +28,6 @@ function HomeRight(props) {
     setUsername(username)
   }, [])
 
-  // 修改用户名 - 可考虑用useEffect
-  const changeUsername = () => {
-    let newName = '8ss88'
-    localStorage.setItem('username', newName)
-    setUsername(newName)
-  }
   // 检测contextData.key的变化，如果有变化，则调用该hook
   useEffect(() => {
     // console.log('ooooooooooo')
@@ -42,8 +36,6 @@ function HomeRight(props) {
     setUsername(username)
     setAvatar(avatar)
   }, [contextData.key])
-
-
 
   // 修改资料点击
   const clickProfile = () => {
@@ -94,7 +86,6 @@ function HomeRight(props) {
       <Layout className="site-right">
         {/*头部由左侧button 和 右侧下拉框组成*/}
         {/*右侧 头部 有全局变量key*/}
-        <button onClick={changeUsername}>修改username</button>
         <Header key={contextData.key} className="site-right-header">
           <Button
               style={{marginLeft: '12px', marginBottom: 16}}
