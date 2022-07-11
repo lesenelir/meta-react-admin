@@ -40,7 +40,17 @@ router.post('/', async (ctx) => {
   // 鉴权成功 - 修改数据库中对应的字段
   let sqlSearchSend = `select username,token,avatar from user where token='${token}'`,
       sqlSearchUser = `select username,password from user where token='${token}' `,
-      temp
+      sqlSearchExist = `select * from user where username='${username}'`,
+      temp,
+      whetherExistUserArr
+
+  whetherExistUserArr = await queryFn(sqlSearchExist)
+
+  if (whetherExistUserArr.length > 0) {
+    // 当前这个数据库存在这个用户名
+    ctx.body = returnMsg(1, '用户名已存在')
+    return
+  }
 
   temp = await queryFn(sqlSearchUser) // 通过token 检索数据库中 用户名和密码 旧值
   let sqlUpdate = `Update user set username='${username || temp[0].username}',password='${password || temp[0].password}' where token='${token}'`

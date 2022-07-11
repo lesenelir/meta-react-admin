@@ -26,6 +26,9 @@ function Profile() {
         // 更新Header组件，context
         contextData.changeKeyFn()
       }
+      if (res.errCode === 1) {
+        message.error('用户名已存在')
+      }
     })
   }
 
