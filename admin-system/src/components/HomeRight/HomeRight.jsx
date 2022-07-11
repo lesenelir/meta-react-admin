@@ -7,7 +7,8 @@ import './HomeRight.css'
 import KeyContext from "../../context/context"
 import defaultAvatar from '../../assets/images/avatar.jpg'
 // 环境变量
-import {SERVER_PORT_IMG} from '../../config/index'
+// import {SERVER_PORT_IMG} from '../../config/index'
+import {SERVER_PORT} from "../../config"
 
 const {Header, Content, Footer} = Layout
 
@@ -96,7 +97,7 @@ function HomeRight(props) {
           <Dropdown overlay={menu}>
             <a href="!#" onClick={(e) => e.preventDefault()}>
               <Space>
-                <img src={SERVER_PORT_IMG + avatar} alt="" className="site-avatar"/>
+                <img src={SERVER_PORT + '/' + avatar} alt="" className="site-avatar"/>
                 {username}
                 <DownOutlined/>
               </Space>
