@@ -40,5 +40,11 @@ from -> antd Github仓库的issue 和 discussions中获得方法
 react-router-v6开始起步的文档没有介绍编程式导航的hook
 
 
+React 钩子来更新子组件的值，然后使用useContext此上下文的钩子触发任何组件的组件重新渲染
+
+
+context 传入一个值，但是不知道怎么去更新这个值，可以在context中传入一个对象
+搭配usestate后，context才具备响应式
+useEffect 监控context.key的数据变化，变化后，从localStorage中读取数据，进行修改
 
 

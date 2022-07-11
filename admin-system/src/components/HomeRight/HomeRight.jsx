@@ -1,21 +1,23 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {Breadcrumb, Button, Space, Menu, Dropdown, Layout, message} from "antd"
 import {MenuFoldOutlined, MenuUnfoldOutlined, DownOutlined} from "@ant-design/icons"
 import {Outlet, useNavigate} from 'react-router-dom'
-import {connect} from "react-redux"
 
 import './HomeRight.css'
+import KeyContext from "../../context/context"
 import defaultAvatar from '../../assets/images/avatar.jpg'
 // 环境变量
 import {SERVER_PORT_IMG} from '../../config/index'
 
 const {Header, Content, Footer} = Layout
 
+
 function HomeRight(props) {
-  // console.log(props)
   const [avatar, setAvatar] = useState(defaultAvatar)
   const [username, setUsername] = useState('喵宝宝')
   const navigate = useNavigate()
+  const contextData = useContext(KeyContext) // key changeKeyFn
+  console.log(contextData)
 
   // 组件加载刷新页面才会加载 componentDidMount
   useEffect(() => {
@@ -25,6 +27,22 @@ function HomeRight(props) {
     setAvatar(avatar)
     setUsername(username)
   }, [])
+
+  // 修改用户名 - 可考虑用useEffect
+  const changeUsername = () => {
+    let newName = '8ss88'
+    localStorage.setItem('username', newName)
+    setUsername(newName)
+  }
+  // 检测contextData.key的变化，如果有变化，则调用该hook
+  useEffect(() => {
+    // console.log('ooooooooooo')
+    let username = localStorage.getItem('username'),
+        avatar = localStorage.getItem('avatar')
+    setUsername(username)
+    setAvatar(avatar)
+  }, [contextData.key])
+
 
 
   // 修改资料点击
@@ -57,7 +75,7 @@ function HomeRight(props) {
           items={[
             {
               key: '1',
-              label: ( '修改资料'),
+              label: ('修改资料'),
               onClick: () => clickProfile()
             },
             {
@@ -65,7 +83,7 @@ function HomeRight(props) {
             },
             {
               key: '2',
-              label: ( '退出登录'),
+              label: ('退出登录'),
               onClick: () => logout()
             }
           ]}
@@ -76,7 +94,8 @@ function HomeRight(props) {
       <Layout className="site-right">
         {/*头部由左侧button 和 右侧下拉框组成*/}
         {/*右侧 头部 有全局变量key*/}
-        <Header key={props.myKey} className="site-right-header">
+        <button onClick={changeUsername}>修改username</button>
+        <Header key={contextData.key} className="site-right-header">
           <Button
               style={{marginLeft: '12px', marginBottom: 16}}
               onClick={() => props.setCollapsed(!props.collapsed)}
@@ -88,7 +107,7 @@ function HomeRight(props) {
               <Space>
                 <img src={SERVER_PORT_IMG + avatar} alt="" className="site-avatar"/>
                 {username}
-                <DownOutlined />
+                <DownOutlined/>
               </Space>
             </a>
           </Dropdown>
@@ -112,24 +131,4 @@ function HomeRight(props) {
   )
 }
 
-// state映射
-const mapStateToProps = (state) => {
-  return {
-    myKey: state.key
-  }
-}
-
-// dispatch映射
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     changeKeyFn() {
-//       dispatch({type: 'changeKey'})
-//     }
-//   }
-// }
-
-
-// export default connect(mapStateToProps, mapDispatchToProps)(HomeRight)
-export default connect(mapStateToProps)(HomeRight)
-
-// export default HomeRight
+export default HomeRight

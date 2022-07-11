@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react'
-import {Button, Form, Input, message} from "antd";
-import {connect} from "react-redux"
+import React, {useContext} from 'react'
+import {Button, Form, Input, message} from "antd"
+
+import KeyContext from "../../context/context"
 
 import './Profile.css'
-import {changeUserInfoApi} from "../../request/api";
+import {changeUserInfoApi} from "../../request/api"
 
-function Profile(props) {
+function Profile() {
+  const contextData = useContext(KeyContext) // key changeKeyFn
 
   const onFinish = (values) => {
     // 调接口，修改用户名和密码
@@ -21,8 +23,8 @@ function Profile(props) {
         localStorage.setItem('avatar', avatar)
         localStorage.setItem('username', username)
         localStorage.setItem('token', token)
-        // 更新Header组件，react-redux
-        props.changeKeyFn()
+        // 更新Header组件，context
+        contextData.changeKeyFn()
       }
     })
   }
@@ -49,14 +51,5 @@ function Profile(props) {
   )
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeKeyFn() {
-      dispatch({type: 'changeKey'})
-    }
-  }
-}
 
-export default connect(null, mapDispatchToProps)(Profile)
-
-// export default Profile
+export default Profile
