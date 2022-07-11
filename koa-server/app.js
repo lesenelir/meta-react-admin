@@ -34,6 +34,7 @@ app.use(bodyParser())
 app.use(router.routes(), router.allowedMethods()) // 调用router中间件
 // 读取静态资源的中间件要卸载路由的后面
 app.use(staticKoa(path.join(__dirname, './assets')))
+app.use(staticKoa(path.join(__dirname, './router/manage/upload')))
 
 app.listen(port, () => {
   console.log(`Server is running at ${host}:${port}`)

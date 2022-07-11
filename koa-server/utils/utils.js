@@ -70,7 +70,11 @@ const queryFn = (sql) => {
 }
 
 
-//
+/**
+ * 验证token是否合效
+ * @param token
+ * @returns {boolean}
+ */
 const jwtVerify = (token) => {
   try {
     // 解密token，得到username 和 password 和 token
