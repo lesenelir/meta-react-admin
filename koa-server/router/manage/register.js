@@ -17,7 +17,7 @@ router.post('/', async (ctx) => {
       ctx.body = returnMsg(2, '注册失败', '该用户已经注册')
     } else { // 没有该用户，则进行注册
       // 添加用户
-      let sqlAdd = `insert into user values (null, '${username}', '${password}', null, 'avatar.jpg')`
+      let sqlAdd = `insert into user values (null, '${username}', '${password}', null, 'avatar.jpg', 'normal', 0)`
       await queryFn(sqlAdd)
       ctx.body = returnMsg(0, '注册成功', '注册成功')
     }

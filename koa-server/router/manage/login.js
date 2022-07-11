@@ -24,8 +24,14 @@ router.post('/', async (ctx) => {
           sqlUpdate = `update user set token='${token}' where username='${username}'`
 
       await queryFn(sqlUpdate) // 插入token到数据库
-      let res = await queryFn(sqlSearch) // 重新查询数据库，更新数据，
-      ctx.body = returnMsg(0, '登录成功', res)
+      let res = await queryFn(sqlSearch) // 重新查询数据库，更新数据
+      ctx.body = returnMsg(0, '登录成功', {
+        username: res[0].username,
+        token: res[0].token,
+        avatar: res[0].avatar,
+        role: res[0].role,
+        editable: res[0].editable
+      })
     } else {
       // 查询后用户不存在
       ctx.body = returnMsg(2, '登录失败', '用户不存在，请先注册')

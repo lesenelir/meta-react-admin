@@ -10,7 +10,7 @@ import {LoadingOutlined, PlusOutlined} from "@ant-design/icons";
 
 function Profile() {
   const [loading, setLoading] = useState(false)
-  const [imageUrl, setImageUrl] = useState()
+  const [imageUrl] = useState()
   const contextData = useContext(KeyContext) // key changeKeyFn
 
   // 表单提交响应函数

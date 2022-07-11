@@ -56,6 +56,8 @@ function HomeRight(props) {
     localStorage.removeItem('token')
     localStorage.removeItem('username')
     localStorage.removeItem('avatar')
+    localStorage.removeItem('role')
+    localStorage.removeItem('editable')
     message.success('退出成功', 1.5)
     setTimeout(() => {
       navigate('/login')

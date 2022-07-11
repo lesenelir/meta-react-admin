@@ -18,7 +18,6 @@ function Login(props) {
     // res: {errCode: 0, message: '登录成功', data: {…}}
     // data: [avatar: , manageToken, username]
     LoginApi({username, password}).then((res) => {
-      console.log('11111111', res)
 
       // 登录成功
       if (res.errCode === 0) {
@@ -26,10 +25,11 @@ function Login(props) {
 
         // 保存用户信息和token
         // 将token保存到localStorage 和 react-redux
-        localStorage.setItem('username', res.data[0].username)
-        // localStorage.setItem('manageToken', res.data[0].token)
-        localStorage.setItem('token', res.data[0].token)
-        localStorage.setItem('avatar', res.data[0].avatar) // 环境变量
+        localStorage.setItem('username', res.data.username)
+        localStorage.setItem('token', res.data.token)
+        localStorage.setItem('avatar', res.data.avatar)
+        localStorage.setItem('role', res.data.role)
+        localStorage.setItem('editable', res.data.editable)
 
         // 跳转页面
         setTimeout(() => {

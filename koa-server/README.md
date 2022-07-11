@@ -88,14 +88,20 @@ body-parse 用于获得 ctx.request.body   => 返回请求体（返回给前端�
     3.3 修改localStorage，更新header组件 key context
 
 
+【用户角色权限】 role
+- 1. 管理员
+    - 可以给普通用户增加编辑权限
+- 2. 普通用户
 
 
+【编辑权限】 editable
+- 管理员可以编辑
+- 普通用户需要等管理员赋予权限才可编辑
 
+登录成功需要返回 role和editable字段
 
+> editable 表示是否可以编辑文章， 0 表示不允许编辑文章， 1 表示可以编辑文章
 
-
-
-
-
+> role 表示是否为管理员， normal表示普通用户 ； vip表示管理员
 
 

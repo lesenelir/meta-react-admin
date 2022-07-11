@@ -11,6 +11,13 @@ function HomeLeft(props) {
   // 编程式路由导航 配合 Menu4.20.0
   const navigate = useNavigate()
   const [asideKey, setASideKey] = useState('0')
+  const [flag, setFlag] = useState(false)
+
+  useEffect(() => {
+    localStorage.getItem('role') === 'vip'
+        ? setFlag(false)
+        : setFlag(true)
+  }, [])
 
   const items = [
     {
@@ -68,7 +75,8 @@ function HomeLeft(props) {
             navigate('/namelist')
           }
         }
-      ]
+      ],
+      disabled: flag
     }
   ]
 
@@ -114,7 +122,7 @@ function HomeLeft(props) {
         <Menu
             style={{minHeight: '100vh'}}
             theme="light"
-            defaultOpenKeys={['1', '2', '3', '4']}
+            defaultOpenKeys={['1', '2', '3']}
             defaultSelectedKeys={['1-1']}
             selectedKeys={[asideKey]}
             mode="inline"
