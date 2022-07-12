@@ -38,10 +38,20 @@ const changeUserInfoApi = (params) => {
   return request.post('/info', params)
 }
 
+/**
+ * 获取文章列表接口
+ * @returns {Promise<AxiosResponse<any>>}
+ * @constructor
+ */
+const GetArticleListApi = () => {
+  return request.get('/article/list')
+}
+
 
 export {
   RegisterApi,
   LoginApi,
   UserInfoApi,
-  changeUserInfoApi
+  changeUserInfoApi,
+  GetArticleListApi
 }

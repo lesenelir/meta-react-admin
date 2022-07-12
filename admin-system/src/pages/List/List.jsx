@@ -1,10 +1,11 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import {Button, Table} from "antd"
 
 import './List.css'
+import {GetArticleListApi} from "../../request/api";
 
 // 按钮组件
-function OperationButton(props) {
+function OperationButton() {
   return (
       <>
         <Button shape="round" style={{marginRight: '12px'}}>编辑</Button>
@@ -18,38 +19,12 @@ function TitleComp(props) {
   return (
       <>
         <div>
-          <a href="!#">主标题</a>
+          <a href="!#">{props.title}</a>
         </div>
-        <p style={{color: '#A9A9A9'}}>副标题副标题副标题副标题</p>
+        <p style={{color: '#A9A9A9'}}>{props.subTitle || ''}</p>
       </>
   )
 }
-
-
-const dataSource = [
-  {
-    key: '1',
-    title: <TitleComp/>,
-    time: '2012-03-03',
-    operation: <OperationButton/>
-  },
-  {
-    key: '2',
-    title: <TitleComp/>,
-    time: '2022-03-03',
-    operation: <OperationButton/>
-  }
-]
-
-// const data = []
-// for (let i = 0; i < 10; i++) {
-//   data.push({
-//     key: i,
-//     title: <TitleComp/>,
-//     time: '2012-03-03',
-//     operation: <OperationButton/>
-//   })
-// }
 
 const columns = [
   {
@@ -73,7 +48,28 @@ const columns = [
 ]
 
 
-function List(props) {
+function List() {
+  const [dataSource, setDataSource] = useState([])
+
+  useEffect(() => {
+    GetArticleListApi().then(res => {
+      console.log(res.data)
+      let newArr = [],
+          obj
+      res.data.map((item) => {
+        obj = {
+          key: item.id,
+          title: <TitleComp title={item.title} subTitle={item.subTitle} />,
+          time: item.date,
+          action: <OperationButton id={item.id} />
+        }
+        return newArr.push(obj)
+      })
+      setDataSource(newArr)
+    })
+  }, [])
+
+
   return (
       <div>
         <Table dataSource={dataSource} columns={columns} />
