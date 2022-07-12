@@ -18,7 +18,7 @@ function HomeRight(props) {
   const [username, setUsername] = useState('喵宝宝')
   const navigate = useNavigate()
   const contextData = useContext(KeyContext) // key changeKeyFn
-  console.log(contextData)
+  // console.log(contextData)
 
   // 组件加载刷新页面才会加载 componentDidMount
   useEffect(() => {

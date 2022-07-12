@@ -105,6 +105,9 @@ function HomeLeft(props) {
         setASideKey('1-1')
         break
     }
+    if (location.pathname.includes('/edit')) {
+      setASideKey('2-2')
+    }
   }, [location.pathname])
 
   return (

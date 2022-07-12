@@ -12,6 +12,7 @@ const routerArr = [
     children: [
       {path: 'list', component: lazy(() => import("../pages/List/List"))},
       {path: 'edit', component: lazy(() => import("../pages/Edit/Edit"))},
+      {path: 'edit/:id', component: lazy(() => import("../pages/Edit/Edit"))},
       {path: 'profile', component: lazy(() => import("../pages/Profile/Profile"))},
       {path: 'namelist', component: lazy(() => import('../pages/NameList/NameList'))}
     ]

@@ -2,13 +2,20 @@ import React, {useEffect, useState} from "react"
 import {Button, Table} from "antd"
 
 import './List.css'
-import {GetArticleListApi} from "../../request/api";
+import {GetArticleListApi} from "../../request/api"
+import {useNavigate} from "react-router-dom"
 
 // 按钮组件
 function OperationButton() {
+  const navigate = useNavigate()
+
+  const goToEdit = () => {
+    navigate('/edit')
+  }
+
   return (
       <>
-        <Button shape="round" style={{marginRight: '12px'}}>编辑</Button>
+        <Button shape="round" style={{marginRight: '12px'}} onClick={goToEdit}>编辑</Button>
         <Button shape="round" danger>删除</Button>
       </>
   )
@@ -61,7 +68,7 @@ function List() {
           key: item.id,
           title: <TitleComp title={item.title} subTitle={item.subTitle} />,
           time: item.date,
-          action: <OperationButton id={item.id} />
+          operation: <OperationButton id={item.id} />
         }
         return newArr.push(obj)
       })
