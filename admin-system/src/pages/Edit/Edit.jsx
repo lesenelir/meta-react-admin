@@ -1,12 +1,8 @@
 import React from 'react'
 
 import Editor from "../../components/Editor/Editor"
-import {useParams} from "react-router-dom"
 
-function Edit(props) {
-  const params = useParams()
-  console.log(params)
-
+function Edit() {
   return (
       <div>
         <Editor/>

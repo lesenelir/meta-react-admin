@@ -47,11 +47,34 @@ const GetArticleListApi = () => {
   return request.get('/article/list')
 }
 
+/**
+ * 根据id获取文章
+ * @param params id参数
+ * @returns {Promise<AxiosResponse<any>>}
+ * @constructor
+ */
+const GetArticleByIdApi = (params) => {
+  // return request.post('/article/info', params)
+  return request.get(`/article/info/${params.id}`)
+}
+
+/**
+ * 文章编辑接口
+ * @param params
+ * @returns {Promise<AxiosResponse<any>>}
+ * @constructor
+ */
+const EditArticleApi = (params) => {
+  return request.post('/article/edit', params)
+}
+
 
 export {
   RegisterApi,
   LoginApi,
   UserInfoApi,
   changeUserInfoApi,
-  GetArticleListApi
+  GetArticleListApi,
+  GetArticleByIdApi,
+  EditArticleApi
 }

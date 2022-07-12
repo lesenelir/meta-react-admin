@@ -6,11 +6,11 @@ import {GetArticleListApi} from "../../request/api"
 import {useNavigate} from "react-router-dom"
 
 // 按钮组件
-function OperationButton() {
+function OperationButton(props) {
   const navigate = useNavigate()
-
+  // console.log(props, 'sssss')
   const goToEdit = () => {
-    navigate('/edit/1')
+    navigate(`/edit/${props.id}`)
   }
 
   return (

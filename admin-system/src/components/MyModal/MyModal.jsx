@@ -7,6 +7,8 @@ function MyModal(props) {
   const handleOk = () => {
     form.validateFields().then(res => {
       // 通知父级修改文章
+      console.log(res)
+      props.submitArticleEdit(res)
     }).catch(err => {
       console.log(err)
     })

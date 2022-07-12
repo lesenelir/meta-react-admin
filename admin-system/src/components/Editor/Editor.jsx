@@ -1,34 +1,73 @@
 import React, {useEffect, useState} from 'react'
-import {PageHeader, Button} from "antd"
+import {PageHeader, Button, message} from "antd"
 
 import E from 'wangeditor'
-import {useLocation, useNavigate} from "react-router-dom"
-import {ArrowLeftOutlined} from "@ant-design/icons";
+import {useLocation, useNavigate, useParams} from "react-router-dom"
+import {ArrowLeftOutlined} from "@ant-design/icons"
 import moment from "moment"
 import MyModal from "../MyModal/MyModal"
+import {EditArticleApi, GetArticleByIdApi} from "../../request/api";
 
 let editor = null
 function Editor() {
-  const [content, setContent] = useState('')
   const location = useLocation()
   const navigate = useNavigate()
+  const {id} = useParams()
+  const [content, setContent] = useState('')
+  const [modalTitle, setModalTitle] = useState('')
+  const [modalSubTitle, setModalSubTitle] = useState('')
   // 控制modal显示隐藏控制
   const [showModal, setShowModal] = useState(false)
 
+
   // 依赖项为[]，不依赖数据的更新只执行一次，相当于componentDidMount
   useEffect(() => {
+    // 实例化富文本编辑器
     editor = new E('#myEditor')
-
     editor.config.onchange = (newHtml) => {
       setContent(newHtml)
     }
-
     editor.create()
+
+    // 获取地址栏id
+    if (id) {
+      // id存在，代表编辑文章
+      GetArticleByIdApi({id}).then(res => {
+        console.log(res)
+        if (res.errCode === 0) {
+          message.success(res.message)
+          editor.txt.html(res.data.content)
+          setModalTitle(res.data.title)
+          setModalSubTitle(res.data.subTitle)
+        } else {
+          message.error(res.message)
+        }
+      })
+    } else {
+      // id不存在，代表要添加文章
+    }
 
     return () => { // 清除副作用，componentWillUnmount
       editor.destroy()
     }
-  }, [])
+    // BUG -> 此处id是否要为依赖项
+  }, [id])
+
+  // 模态框点击提交，触发ajax请求
+  const submitArticleEdit = (value) => {
+    console.log(value)
+    EditArticleApi({
+      title: value.title,
+      subTitle: value.subTitle,
+      content: content,
+      id: id
+    }).then(res => {
+      if (res.errCode === 0) {
+        message.success(res.message)
+      }
+    })
+  }
+
 
   return (
       <div className="editor">
@@ -45,7 +84,13 @@ function Editor() {
             ]}
         />
         <div id="myEditor"/>
-        <MyModal showModal={showModal} setShowModal={setShowModal} title="ss" subTitle="xx" />
+        <MyModal
+            showModal={showModal}
+            setShowModal={setShowModal}
+            title={modalTitle}
+            subTitle={modalSubTitle}
+            submitArticleEdit={submitArticleEdit}
+        />
       </div>
   )
 }
