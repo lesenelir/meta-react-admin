@@ -67,7 +67,7 @@ function List() {
         obj = {
           key: item.id,
           title: <TitleComp title={item.title} subTitle={item.subTitle} />,
-          time: item.date,
+          time: new Date(item.date).toISOString().substring(0, 10),
           operation: <OperationButton id={item.id} />
         }
         return newArr.push(obj)
