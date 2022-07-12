@@ -112,3 +112,6 @@ body-parse 用于获得 ctx.request.body   => 返回请求体（返回给前端�
 - 3. title subTitle content date author字段全该
 
 
+【文章获取】
+通过点击"编辑"去Edit编辑页面需要后端写一个通过id的获得请求
+
