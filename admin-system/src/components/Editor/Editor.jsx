@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {PageHeader, Button} from "antd"
 
 import E from 'wangeditor'
-import {useLocation} from "react-router-dom"
+import {useLocation, useNavigate} from "react-router-dom"
 import {ArrowLeftOutlined} from "@ant-design/icons";
 import moment from "moment"
 import MyModal from "../MyModal/MyModal"
@@ -11,6 +11,7 @@ let editor = null
 function Editor() {
   const [content, setContent] = useState('')
   const location = useLocation()
+  const navigate = useNavigate()
   // 控制modal显示隐藏控制
   const [showModal, setShowModal] = useState(false)
 
@@ -36,7 +37,7 @@ function Editor() {
             style={{padding: 0, marginBottom: '20px'}}
             ghost={false}
             backIcon={location.pathname === '/edit' ? false: <ArrowLeftOutlined />}
-            onBack={() => null}
+            onBack={() => navigate('/list')}
             title="文章编辑"
             subTitle={`当前日期: ${moment().format('YYYY-MM-DD')}`}
             extra={[
@@ -44,7 +45,7 @@ function Editor() {
             ]}
         />
         <div id="myEditor"/>
-        <MyModal showModal={showModal} setShowModal={setShowModal} />
+        <MyModal showModal={showModal} setShowModal={setShowModal} title="ss" subTitle="xx" />
       </div>
   )
 }

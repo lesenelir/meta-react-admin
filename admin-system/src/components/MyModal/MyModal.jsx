@@ -2,9 +2,15 @@ import React from 'react'
 import {Modal, Form, Input} from "antd"
 
 function MyModal(props) {
+  const [form] = Form.useForm()
 
   const handleOk = () => {
-    // setIsModalVisible(false);
+    form.validateFields().then(res => {
+      // 通知父级修改文章
+    }).catch(err => {
+      console.log(err)
+    })
+
     props.setShowModal(false)
   }
 
@@ -23,8 +29,9 @@ function MyModal(props) {
                cancelText="取消"
         >
           <Form
+              form={form}
               name="basic"
-              initialValues={{remember: true}}
+              initialValues={{ title: props.title, subTitle: props.subTitle }}
               autoComplete="off"
           >
             <Form.Item label="标题" name="title" rules={[{ required: true, message: '请输入标题'}]}>

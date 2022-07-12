@@ -105,3 +105,10 @@ body-parse 用于获得 ctx.request.body   => 返回请求体（返回给前端�
 > role 表示是否为管理员， normal表示普通用户 ； vip表示管理员
 
 
+【文章编辑逻辑】
+- 0. 鉴权
+- 1. 前端传文章的id过来
+- 2. 到数据库中查找对应id的文章
+- 3. title subTitle content date author字段全该
+
+

@@ -10,7 +10,7 @@ function OperationButton() {
   const navigate = useNavigate()
 
   const goToEdit = () => {
-    navigate('/edit')
+    navigate('/edit/1')
   }
 
   return (
