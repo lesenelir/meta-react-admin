@@ -77,7 +77,7 @@ function List() {
   // 分页总数据
   const [total, setTotal] = useState(50)
   // 分页当前页码
-  const [current, setCurrent] = useState(1)
+  // const [current, setCurrent] = useState(1)
 
   // 封装请求的方法
   const getListFn = useCallback( (page, pageSize) => {
@@ -89,8 +89,8 @@ function List() {
       let newArr = []
       // 设置总数据
       setTotal(res.data.total)
-      // 设置当前页，每页个数
-      setCurrent(res.data.current)
+      // 设置当前页，每页个数  -  此处把res.data.current值直接传入Button组件中
+      // setCurrent(res.data.current)
       res.data.arr.map((item) => {
         let obj = {
           key: item.id,
