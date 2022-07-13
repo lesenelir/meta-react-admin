@@ -68,6 +68,16 @@ const EditArticleApi = (params) => {
   return request.post('/article/edit', params)
 }
 
+/**
+ * 删除文章API
+ * @param params
+ * @returns {Promise<AxiosResponse<any>>}
+ * @constructor
+ */
+const DeleteArticleApi = (params) => {
+  return request.post('/article/delete', params)
+}
+
 
 export {
   RegisterApi,
@@ -76,5 +86,6 @@ export {
   changeUserInfoApi,
   GetArticleListApi,
   GetArticleByIdApi,
-  EditArticleApi
+  EditArticleApi,
+  DeleteArticleApi
 }

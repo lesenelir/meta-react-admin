@@ -44,11 +44,55 @@ React 钩子来更新子组件的值，然后使用useContext此上下文的钩�
 
 
 context 传入一个值，但是不知道怎么去更新这个值，可以在context中传入一个对象
-搭配usestate后，context才具备响应式
+搭配useState后，context才具备响应式
 useEffect 监控context.key的数据变化，变化后，从localStorage中读取数据，进行修改
 
 
 antd的hook ： 比如有Form.useForm() 的hook
+
+
+
+useCallback hook使用:
+为了更好的调用封装函数，把useEffect中的内容提取进行封装，并由useEffect进行直接调用会报警告
+
+useEffect(() => {
+  getListFn()
+}, [])
+React Hook useEffect has a missing dependency: 'getListFn'. Either include it or remove the dependency array
+
+
+// 此时会出现无限调用
+useEffect(() => {
+   getListFn()
+}, [getListFn])
+The 'getListFn' function makes the dependencies of useEffect Hook (at line 98) change on every render. To fix this, wrap the definition of 'getListFn' in its own useCallback() Hook  react-hooks/exhaustive-deps
+
+// 出现无限调用，使用callback hook
+const getListFn = useCallback( () => {
+    GetArticleListApi().then(res => {
+      let newArr = [],
+          obj
+      res.data.map((item) => {
+        obj = {
+          key: item.id,
+          title: <TitleComp title={item.title} subTitle={item.subTitle} />,
+          time: new Date(item.date).toISOString().substring(0, 10),
+          operation: <OperationButton getListFn={getListFn} id={item.id} />
+        }
+        return newArr.push(obj)
+      })
+      setDataSource(newArr)
+    })
+}, [])
+
+useEffect(() => {
+  getListFn()
+}, [getListFn])
+
+
+
+
+
 
 
 
