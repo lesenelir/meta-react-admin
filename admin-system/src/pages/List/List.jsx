@@ -76,10 +76,13 @@ function List() {
   const [dataSource, setDataSource] = useState([])
 
   const getListFn = useCallback( () => {
-    GetArticleListApi().then(res => {
+    GetArticleListApi({
+      current: 1,
+      counts: 10
+    }).then(res => {
       let newArr = [],
           obj
-      res.data.map((item) => {
+      res.data.arr.map((item) => {
         obj = {
           key: item.id,
           title: <TitleComp title={item.title} subTitle={item.subTitle} />,

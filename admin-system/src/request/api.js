@@ -40,11 +40,13 @@ const changeUserInfoApi = (params) => {
 
 /**
  * 获取文章列表接口
+ * @param params
  * @returns {Promise<AxiosResponse<any>>}
  * @constructor
  */
-const GetArticleListApi = () => {
-  return request.get('/article/list')
+const GetArticleListApi = (params) => {
+  // return request.get('/article/list')
+  return request.post('/article/list', params)
 }
 
 /**
