@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {Breadcrumb, Button, Space, Menu, Dropdown, Layout, message} from "antd"
 import {MenuFoldOutlined, MenuUnfoldOutlined, DownOutlined} from "@ant-design/icons"
-import {Outlet, useNavigate} from 'react-router-dom'
+import {Link, Outlet, useLocation, useNavigate} from 'react-router-dom'
 
 import './HomeRight.css'
 import KeyContext from "../../context/context"
@@ -16,9 +16,31 @@ const {Header, Content, Footer} = Layout
 function HomeRight(props) {
   const [avatar, setAvatar] = useState(defaultAvatar)
   const [username, setUsername] = useState('喵宝宝')
+  const [bread, setBread] = useState('')
   const navigate = useNavigate()
   const contextData = useContext(KeyContext) // key changeKeyFn
-  // console.log(contextData)
+  const location = useLocation()
+  console.log(location)
+
+  const menu = (
+      <Menu
+          items={[
+            {
+              key: '1',
+              label: ('修改资料'),
+              onClick: () => clickProfile()
+            },
+            {
+              type: 'divider',
+            },
+            {
+              key: '2',
+              label: ('退出登录'),
+              onClick: () => logout()
+            }
+          ]}
+      />
+  )
 
   // 组件加载刷新页面才会加载 componentDidMount
   useEffect(() => {
@@ -37,6 +59,31 @@ function HomeRight(props) {
     setUsername(username)
     setAvatar(avatar)
   }, [contextData.key])
+
+  // 面包屑匹配规则
+  useEffect(() => {
+    switch (location.pathname) {
+      case '/':
+        setBread('')
+        break
+      case '/list':
+        setBread('文章列表')
+        break
+      case '/edit':
+        setBread('文章编辑')
+        break
+      case '/profile':
+        setBread('修改资料')
+        break
+      case '/namelist':
+        setBread('小编名单')
+        break
+      default:
+        setBread('')
+        break
+    }
+  }, [location.pathname])
+
 
   // 修改资料点击
   const clickProfile = () => {
@@ -64,27 +111,6 @@ function HomeRight(props) {
     }, 1500)
   }
 
-
-  const menu = (
-      <Menu
-          items={[
-            {
-              key: '1',
-              label: ('修改资料'),
-              onClick: () => clickProfile()
-            },
-            {
-              type: 'divider',
-            },
-            {
-              key: '2',
-              label: ('退出登录'),
-              onClick: () => logout()
-            }
-          ]}
-      />
-  )
-
   return (
       <Layout className="site-right">
         {/*头部由左侧button 和 右侧下拉框组成*/}
@@ -110,9 +136,15 @@ function HomeRight(props) {
         {/*内容区由面包屑 和 内容区组成*/}
         <Content style={{margin: '0 16px'}}>
           <Breadcrumb style={{margin: '16px 0'}}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+            <Breadcrumb.Item><Link to="/">首页</Link></Breadcrumb.Item>
+            {/*忽略首页的/ 此处做特殊处理*/}
+            {
+              bread === ''
+                  ? ''
+                  : <Breadcrumb.Item><Link to={location.pathname}>{bread}</Link></Breadcrumb.Item>
+            }
           </Breadcrumb>
+
           <div className="site-right-content" style={{padding: 24, minHeight: 360}}>
             <Outlet/>
           </div>

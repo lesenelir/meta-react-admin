@@ -98,7 +98,7 @@ function HomeLeft(props) {
       case '/profile':
         setASideKey('3')
         break
-      case 'namelist':
+      case '/namelist':
         setASideKey('4-1')
         break
       default:
