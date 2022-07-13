@@ -40,7 +40,7 @@ const changeUserInfoApi = (params) => {
 
 /**
  * 获取文章列表接口
- * @param params
+ * @param params current当前页码 counts每页的个数
  * @returns {Promise<AxiosResponse<any>>}
  * @constructor
  */
@@ -62,7 +62,7 @@ const GetArticleByIdApi = (params) => {
 
 /**
  * 文章编辑接口
- * @param params
+ * @param params title subTitle? content id
  * @returns {Promise<AxiosResponse<any>>}
  * @constructor
  */
@@ -72,7 +72,7 @@ const EditArticleApi = (params) => {
 
 /**
  * 删除文章API
- * @param params
+ * @param params params title subTitle? content id
  * @returns {Promise<AxiosResponse<any>>}
  * @constructor
  */
@@ -82,7 +82,7 @@ const DeleteArticleApi = (params) => {
 
 /**
  * 文章添加接口
- * @param params
+ * @param params title subTitle? content id?
  * @returns {Promise<AxiosResponse<any>>}
  * @constructor
  */

@@ -85,6 +85,7 @@ function List() {
       current: page,
       counts: pageSize
     }).then(res => {
+      console.log('ssss',res)
       let newArr = []
       // 设置总数据
       setTotal(res.data.total)
@@ -95,7 +96,7 @@ function List() {
           key: item.id,
           title: <TitleComp title={item.title} subTitle={item.subTitle} />,
           time: new Date(item.date).toISOString().substring(0, 10),
-          operation: <OperationButton current={current} getListFn={getListFn} id={item.id} />
+          operation: <OperationButton current={res.data.current} getListFn={getListFn} id={item.id} />
         }
         return newArr.push(obj)
       })
