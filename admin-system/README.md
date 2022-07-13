@@ -53,8 +53,7 @@ antd的hook ： 比如有Form.useForm() 的hook
 
 
 useCallback hook使用:
-为了更好的调用封装函数，把useEffect中的内容提取进行封装，并由useEffect进行直接调用会报警告
-
+为了更好的调用封装函数（需要封装请求方法 getListFn），把useEffect中的内容提取进行封装，并由useEffect进行直接调用会报警告
 useEffect(() => {
   getListFn()
 }, [])

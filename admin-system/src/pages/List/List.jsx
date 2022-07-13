@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react"
-import {Button, message, Table} from "antd"
+import {Button, message, Table, Pagination} from "antd"
 
 import './List.css'
 import {DeleteArticleApi, GetArticleListApi} from "../../request/api"
@@ -55,7 +55,7 @@ function OperationButton(props) {
       if (res.errCode === 0) {
         message.success(res.message)
         // 重新请求列表
-        props.getListFn()
+        props.getListFn(props.current, 10)
       } else {
         message.error(res.message)
       }
@@ -74,35 +74,60 @@ function OperationButton(props) {
 // List组件
 function List() {
   const [dataSource, setDataSource] = useState([])
+  // 分页总数据
+  const [total, setTotal] = useState(50)
+  // 分页当前页码
+  const [current, setCurrent] = useState(1)
 
-  const getListFn = useCallback( () => {
+  // 封装请求的方法
+  const getListFn = useCallback( (page, pageSize) => {
     GetArticleListApi({
-      current: 1,
-      counts: 10
+      current: page,
+      counts: pageSize
     }).then(res => {
-      let newArr = [],
-          obj
+      let newArr = []
+      // 设置总数据
+      setTotal(res.data.total)
+      // 设置当前页，每页个数
+      setCurrent(res.data.current)
       res.data.arr.map((item) => {
-        obj = {
+        let obj = {
           key: item.id,
           title: <TitleComp title={item.title} subTitle={item.subTitle} />,
           time: new Date(item.date).toISOString().substring(0, 10),
-          operation: <OperationButton getListFn={getListFn} id={item.id} />
+          operation: <OperationButton current={current} getListFn={getListFn} id={item.id} />
         }
         return newArr.push(obj)
       })
       setDataSource(newArr)
     })
+    // eslint-disable-next-line
   }, [])
 
   useEffect(() => {
-    getListFn()
+    getListFn(1, 10)
   }, [getListFn])
 
 
+  const onPageChange = (page, pageSize) => { // 当前页码，该页码有多少条数据
+    console.log(page, pageSize)
+    getListFn(page, pageSize)
+  }
+
   return (
       <div>
-        <Table dataSource={dataSource} columns={columns} />
+        <Table
+            dataSource={dataSource}
+            columns={columns}
+            pagination={false}
+        />
+
+        <Pagination
+            onChange={onPageChange}
+            defaultCurrent={1}
+            total={total}
+        />
+
       </div>
   )
 }
