@@ -64,10 +64,12 @@ function Editor() {
     }).then(res => {
       if (res.errCode === 0) {
         message.success(res.message)
+        setTimeout(() => {
+          navigate('/list')
+        }, 1)
       }
     })
   }
-
 
   return (
       <div className="editor">
