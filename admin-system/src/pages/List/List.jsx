@@ -110,7 +110,6 @@ function List() {
 
 
   const onPageChange = (page, pageSize) => { // 当前页码，该页码有多少条数据
-    console.log(page, pageSize)
     getListFn(page, pageSize)
   }
 
