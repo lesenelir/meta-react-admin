@@ -80,6 +80,16 @@ const DeleteArticleApi = (params) => {
   return request.post('/article/delete', params)
 }
 
+/**
+ * 文章添加接口
+ * @param params
+ * @returns {Promise<AxiosResponse<any>>}
+ * @constructor
+ */
+const AddArticleApi = (params) => {
+  return request.post('./article/add', params)
+}
+
 
 export {
   RegisterApi,
@@ -89,5 +99,6 @@ export {
   GetArticleListApi,
   GetArticleByIdApi,
   EditArticleApi,
-  DeleteArticleApi
+  DeleteArticleApi,
+  AddArticleApi
 }

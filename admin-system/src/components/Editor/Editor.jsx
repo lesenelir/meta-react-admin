@@ -6,7 +6,7 @@ import {useLocation, useNavigate, useParams} from "react-router-dom"
 import {ArrowLeftOutlined} from "@ant-design/icons"
 import moment from "moment"
 import MyModal from "../MyModal/MyModal"
-import {EditArticleApi, GetArticleByIdApi} from "../../request/api";
+import {AddArticleApi, EditArticleApi, GetArticleByIdApi} from "../../request/api";
 
 let editor = null
 function Editor() {
@@ -51,24 +51,42 @@ function Editor() {
       editor.destroy()
     }
     // BUG -> 此处id是否要为依赖项
-  }, [id])
+    // eslint-disable-next-line
+  }, [])
 
   // 模态框点击提交，触发ajax请求
   const submitArticleEdit = (value) => {
     console.log(value)
-    EditArticleApi({
-      title: value.title,
-      subTitle: value.subTitle,
-      content: content,
-      id: id
-    }).then(res => {
-      if (res.errCode === 0) {
-        message.success(res.message)
-        setTimeout(() => {
-          navigate('/list')
-        }, 1)
-      }
-    })
+    // 有id调用编辑的接口
+    if (id) {
+      EditArticleApi({
+        title: value.title,
+        subTitle: value.subTitle,
+        content: content,
+        id: id
+      }).then(res => {
+        if (res.errCode === 0) {
+          message.success(res.message)
+          setTimeout(() => {
+            navigate('/list')
+          }, 1)
+        }
+      })
+    } else {
+      // 没有id调用添加的接口
+      AddArticleApi({
+        ...value,
+        content
+      }).then(res => {
+        if (res.errCode === 0) {
+          message.success(res.message)
+          setTimeout(() => {
+            navigate('/list')
+          },1)
+        }
+      })
+    }
+
   }
 
   return (
