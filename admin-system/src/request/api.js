@@ -87,7 +87,16 @@ const DeleteArticleApi = (params) => {
  * @constructor
  */
 const AddArticleApi = (params) => {
-  return request.post('./article/add', params)
+  return request.post('/article/add', params)
+}
+
+/**
+ * 获取小编名单接口
+ * @returns {Promise<AxiosResponse<any>>}
+ * @constructor
+ */
+const EditorApi = () => {
+  return request.get('/namelist')
 }
 
 
@@ -100,5 +109,6 @@ export {
   GetArticleByIdApi,
   EditArticleApi,
   DeleteArticleApi,
-  AddArticleApi
+  AddArticleApi,
+  EditorApi
 }

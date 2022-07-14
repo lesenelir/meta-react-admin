@@ -19,7 +19,7 @@ function HomeRight(props) {
   const navigate = useNavigate()
   const contextData = useContext(KeyContext) // key changeKeyFn
   const location = useLocation()
-  console.log(location)
+  // console.log(location)
 
   const menu = (
       <Menu
