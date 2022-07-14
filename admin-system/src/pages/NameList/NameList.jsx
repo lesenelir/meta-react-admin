@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Button, message, Table} from "antd"
-import {EditorApi} from "../../request/api"
+import {EditorApi, IChangeEditorApi} from "../../request/api"
 import {SERVER_PORT} from '../../config'
 
 const columns = [
@@ -48,9 +48,37 @@ const columns = [
 //   }
 // ]
 
-
 function NameList(props) {
   const [dataSource, setDataSource] = useState([])
+  // const [num, setNum] = useState(0)
+
+  const openEditable = (id) => {
+    IChangeEditorApi({
+      id,
+      open: 1
+    }).then(res => {
+      if (res.errCode === 0) {
+        message.success(res.message)
+        window.location.reload()
+      } else {
+        message.error(res.message)
+      }
+    })
+  }
+
+  const closeEditable = (id) => {
+    IChangeEditorApi({
+      id,
+      open: 2
+    }).then(res => {
+      if (res.errCode === 0) {
+        message.success(res.message)
+        window.location.reload()
+      } else {
+        message.error(res.message)
+      }
+    })
+  }
 
   useEffect(() => {
     // 获取用户列表
@@ -68,8 +96,16 @@ function NameList(props) {
             editable: item.editable === 1 ? '已开通' : '未开通',
             btn: (
                 <>
-                  <Button>开通编辑权限</Button>
-                  <Button style={{marginLeft: '20px'}} danger>撤销编辑权限</Button>
+                  <Button onClick={() => openEditable(item.id)}>
+                    开通编辑权限
+                  </Button>
+                  <Button
+                      onClick={() => closeEditable(item.id)}
+                      style={{marginLeft: '20px'}}
+                      danger
+                  >
+                    撤销编辑权限
+                  </Button>
                 </>
             )
           }

@@ -99,6 +99,16 @@ const EditorApi = () => {
   return request.get('/namelist')
 }
 
+/**
+ * 修改小编的编辑权限
+ * @param params id用户id open是否开通用户编辑权限
+ * @returns {Promise<AxiosResponse<any>>}
+ * @constructor
+ */
+const IChangeEditorApi = (params) => {
+  return request.post('/namelist', params)
+}
+
 
 export {
   RegisterApi,
@@ -110,5 +120,6 @@ export {
   EditArticleApi,
   DeleteArticleApi,
   AddArticleApi,
-  EditorApi
+  EditorApi,
+  IChangeEditorApi
 }
