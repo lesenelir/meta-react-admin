@@ -4,6 +4,7 @@ const register = require('./register')
 const info = require('./info')
 const upload = require('./upload')
 const article = require('./article')
+const namelist = require('./namelist')
 
 const router = new Router()
 
@@ -27,6 +28,7 @@ router.use('/register', register.routes(), register.allowedMethods())
 router.use('/info', info.routes(), info.allowedMethods())
 router.use('/upload', upload.routes(), upload.allowedMethods())
 router.use('/article', article.routes(), article.allowedMethods())
+router.use('/namelist', namelist.routes(), namelist.allowedMethods())
 
 
 // /manage/list
