@@ -7,7 +7,6 @@ import './HomeRight.css'
 import KeyContext from "../../context/context"
 import defaultAvatar from '../../assets/images/avatar.jpg'
 // 环境变量
-// import {SERVER_PORT_IMG} from '../../config/index'
 import {SERVER_PORT} from "../../config"
 
 const {Header, Content, Footer} = Layout
@@ -77,6 +76,15 @@ function HomeRight(props) {
         break
       case '/namelist':
         setBread('小编名单')
+        break
+      case '/error/403':
+        setBread('403页面')
+        break
+      case '/error/404':
+        setBread('404页面')
+        break
+      case '/error/500':
+        setBread('500页面')
         break
       default:
         setBread('')

@@ -1,6 +1,8 @@
 import React from 'react'
 import {Modal, Form, Input} from "antd"
 
+
+// Edit页面提交文章后的弹出组件
 function MyModal(props) {
   const [form] = Form.useForm()
 

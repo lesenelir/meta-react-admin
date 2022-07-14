@@ -1,8 +1,6 @@
 import { Layout } from 'antd'
 
 import React, {useState} from "react"
-// import {Outlet} from "react-router-dom"
-
 
 import HomeLeft from "../../components/HomeLeft/HomeLeft"
 import HomeRight from "../../components/HomeRight/HomeRight"
@@ -24,5 +22,4 @@ function Home() {
   )
 }
 
-// <Outlet/>
 export default Home

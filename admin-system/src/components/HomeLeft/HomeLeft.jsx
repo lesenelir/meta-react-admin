@@ -1,4 +1,11 @@
-import {DesktopOutlined, EditOutlined, UserOutlined, LockOutlined} from "@ant-design/icons"
+import {
+  DesktopOutlined,
+  EditOutlined,
+  UserOutlined,
+  LockOutlined,
+  ApiOutlined,
+  LinkOutlined
+} from "@ant-design/icons"
 import React, {useEffect, useState} from "react"
 import logo from "../../assets/images/logo.jpg"
 import {Layout, Menu} from "antd"
@@ -56,8 +63,50 @@ function HomeLeft(props) {
       ]
     },
     {
+      label: '错误页面',
+      key: 3,
+      icon: <ApiOutlined />,
+      children: [
+        {
+          label: '403',
+          key: '3-1',
+          onClick() {
+            navigate('/error/403')
+          }
+        },
+        {
+          label: '404',
+          key: '3-2',
+          onClick() {
+            navigate('/error/404')
+          }
+        },
+        {
+          label: '500',
+          key: '3-3',
+          onClick() {
+            navigate('/error/500')
+          }
+        }
+      ]
+    },
+    {
+      label: '外链',
+      key: '4',
+      icon: <LinkOutlined />,
+      children: [
+        {
+          label: 'Github',
+          key: '4-1',
+          onClick() {
+            window.open('https://github.com/lesenelir/meta-react-admin')
+          }
+        }
+      ]
+    },
+    {
       label: '修改资料',
-      key: '3',
+      key: '5',
       icon: <UserOutlined/>,
       onClick() {
         navigate('/profile')
@@ -65,12 +114,12 @@ function HomeLeft(props) {
     },
     {
       label: '管理员',
-      key: '4',
+      key: '6',
       icon: <LockOutlined/>,
       children: [
         {
           label: '小编名单',
-          key: '4-1',
+          key: '6-1',
           onClick() {
             navigate('/namelist')
           }
@@ -95,11 +144,20 @@ function HomeLeft(props) {
       case '/edit':
         setASideKey('2-2')
         break
+      case '/error/403':
+        setASideKey('3-1')
+        break
+      case '/error/404':
+        setASideKey('3-2')
+        break
+      case '/error/500':
+        setASideKey('3-3')
+        break
       case '/profile':
-        setASideKey('3')
+        setASideKey('5')
         break
       case '/namelist':
-        setASideKey('4-1')
+        setASideKey('6-1')
         break
       default:
         setASideKey('1-1')
@@ -125,7 +183,7 @@ function HomeLeft(props) {
         <Menu
             style={{minHeight: '100vh'}}
             theme="light"
-            defaultOpenKeys={['1', '2', '3']}
+            defaultOpenKeys={['1', '2']}
             defaultSelectedKeys={['1-1']}
             selectedKeys={[asideKey]}
             mode="inline"

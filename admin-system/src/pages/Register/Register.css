@@ -1,8 +1,7 @@
 .register-box {
   height: 100vh;
-  background: url("../../assets/images/register-background.png") no-repeat center center;
+  background: url("../../assets/images/register-background.png") no-repeat fixed center center;
   background-size: cover;
-  background-attachment:fixed;
 }
 
 .form-register-box {

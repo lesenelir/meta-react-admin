@@ -13,6 +13,9 @@ const routerArr = [
       {path: 'list', component: lazy(() => import("../pages/List/List"))},
       {path: 'edit', component: lazy(() => import("../pages/Edit/Edit"))},
       {path: 'edit/:id', component: lazy(() => import("../pages/Edit/Edit"))},
+      {path: 'error/404', component: lazy(() => import('../pages/Error/Error404'))},
+      {path: 'error/403', component: lazy(() => import('../pages/Error/Error403'))},
+      {path: 'error/500', component: lazy(() => import('../pages/Error/Error500'))},
       {path: 'profile', component: lazy(() => import("../pages/Profile/Profile"))},
       {path: 'namelist', component: lazy(() => import('../pages/NameList/NameList'))}
     ]

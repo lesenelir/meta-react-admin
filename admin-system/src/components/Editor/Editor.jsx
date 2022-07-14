@@ -6,7 +6,7 @@ import {useLocation, useNavigate, useParams} from "react-router-dom"
 import {ArrowLeftOutlined} from "@ant-design/icons"
 import moment from "moment"
 import MyModal from "../MyModal/MyModal"
-import {AddArticleApi, EditArticleApi, GetArticleByIdApi} from "../../request/api";
+import {AddArticleApi, EditArticleApi, GetArticleByIdApi} from "../../request/api"
 
 let editor = null
 function Editor() {

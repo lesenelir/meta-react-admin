@@ -3,7 +3,7 @@ import React from 'react'
 import {SyncOutlined} from '@ant-design/icons'
 import './Loading.css'
 
-function Loading(props) {
+function Loading() {
   return (
       <div className={"loading-box"}>
         <SyncOutlined spin style={{fontSize: '80px'}} />
@@ -12,3 +12,4 @@ function Loading(props) {
 }
 
 export default Loading
+
