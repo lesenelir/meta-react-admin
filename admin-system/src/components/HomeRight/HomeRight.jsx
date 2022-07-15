@@ -52,7 +52,6 @@ function HomeRight(props) {
 
   // 检测contextData.key的变化，如果有变化，则调用该hook
   useEffect(() => {
-    // console.log('ooooooooooo')
     let username = localStorage.getItem('username'),
         avatar = localStorage.getItem('avatar')
     setUsername(username)
@@ -64,6 +63,9 @@ function HomeRight(props) {
     switch (location.pathname) {
       case '/':
         setBread('')
+        break
+      case '/crypto':
+        setBread('加密货币')
         break
       case '/list':
         setBread('文章列表')

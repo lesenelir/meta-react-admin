@@ -10,6 +10,7 @@ const routerArr = [
     path: '/',
     component: Home,
     children: [
+      {path: 'crypto', component: lazy(() => import('../pages/Crypto/Crypto'))},
       {path: 'list', component: lazy(() => import("../pages/List/List"))},
       {path: 'edit', component: lazy(() => import("../pages/Edit/Edit"))},
       {path: 'edit/:id', component: lazy(() => import("../pages/Edit/Edit"))},

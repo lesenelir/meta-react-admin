@@ -38,6 +38,13 @@ function HomeLeft(props) {
           onClick() {
             navigate('/')
           }
+        },
+        {
+          label: '加密货币',
+          key: '1-2',
+          onClick() {
+            navigate('/crypto')
+          }
         }
       ]
     },
@@ -137,6 +144,9 @@ function HomeLeft(props) {
     switch (location.pathname) {
       case '/':
         setASideKey('1-1')
+        break
+      case '/crypto':
+        setASideKey('1-2')
         break
       case '/list':
         setASideKey('2-1')
