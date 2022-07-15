@@ -1,4 +1,5 @@
 import request from "./request"
+import axios from "axios";
 
 /**
  * 注册接口
@@ -109,6 +110,15 @@ const IChangeEditorApi = (params) => {
   return request.post('/namelist', params)
 }
 
+/**
+ * 获取加密货币价格的API
+ * @returns {Promise<AxiosResponse<any>>}
+ * @constructor
+ */
+const GetCryptoApi = () => {
+  return axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+}
+
 
 export {
   RegisterApi,
@@ -121,5 +131,6 @@ export {
   DeleteArticleApi,
   AddArticleApi,
   EditorApi,
-  IChangeEditorApi
+  IChangeEditorApi,
+  GetCryptoApi
 }

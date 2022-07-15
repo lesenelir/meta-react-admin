@@ -1,6 +1,12 @@
 @import '~antd/dist/antd.css';
 /*全局css*/
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   /*background-color: darkseagreen;*/
   height: 100vh;
