@@ -11,7 +11,6 @@ import sheep from '../../assets/images/sheep.png'
 import wolf from '../../assets/images/wolf.png'
 
 
-
 const data = [
   {
     id: 1,

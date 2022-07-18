@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {GetCryptoApi} from "../../request/api"
-import Coin from "../../components/Coin/Coin"
+import Coin from "./Coin/Coin"
 
 import './Crypto.css'
 

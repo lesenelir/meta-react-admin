@@ -8,7 +8,7 @@ import KeyContext from "../../context/context"
 import defaultAvatar from '../../assets/images/avatar.jpg'
 // 环境变量
 import {SERVER_PORT} from "../../config"
-import DashBoard from "../DashBoard/DashBoard"
+import DashBoard from "../../pages/DashBoard/DashBoard"
 
 const {Header, Content, Footer} = Layout
 
