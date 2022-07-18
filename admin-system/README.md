@@ -102,4 +102,23 @@ useEffect中axios请求，没有依赖项，则会请求两次，didMount , upda
 路由切换为什么不会刷新页面
 
 
+// history
+history.replaceState('this is a test', null, 'test.html') // url路径会拼接localhost:3000/test  类似于Link，但是页面不会重新加载
+replaceState 只是更改url地址，但不会更改history栈中的内容
+
+history.pushState('pushState test', null, 'pushState.html')
+
+Note:
+replaceState 和 pushState
+第一个参数是state object   JS对象与我们通过pushState创建出来的新的历史记录条目相关联
+第二个参数 title null
+第三个参数 url拼接的参数
+
+
+//
+react-router-v6 路由守卫问题
+
+
+//
+工作台 实现Card组件的封装
 

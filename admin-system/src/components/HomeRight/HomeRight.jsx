@@ -8,6 +8,7 @@ import KeyContext from "../../context/context"
 import defaultAvatar from '../../assets/images/avatar.jpg'
 // 环境变量
 import {SERVER_PORT} from "../../config"
+import DashBoard from "../DashBoard/DashBoard"
 
 const {Header, Content, Footer} = Layout
 
@@ -156,7 +157,11 @@ function HomeRight(props) {
           </Breadcrumb>
 
           <div className="site-right-content" style={{padding: 24, minHeight: 360}}>
-            <Outlet/>
+            {/*<Outlet/>*/}
+            {
+              location.pathname === '/' ? <DashBoard/> : <Outlet/>
+
+            }
           </div>
         </Content>
 
