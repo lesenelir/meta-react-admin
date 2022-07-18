@@ -1,5 +1,7 @@
 import React from 'react'
-import TopPanel from "./TopPanel/TopPanel";
+
+import TopPanel from "./TopPanel/TopPanel"
+import BtcChart from "./BtcChart/BtcChart"
 
 import './DashBoard.css'
 
@@ -41,19 +43,27 @@ const data = [
 function DashBoard() {
   return (
       <div className="dashboard-box">
-        {
-          data.map(item => {
-            return (
-                <TopPanel
-                    id={item.id}
-                    img={item.img}
-                    title={item.title}
-                    desc={item.desc}
-                />
-            )
-          })
-        }
 
+        <div className="card-box">
+          {/*TopPanel*/}
+          {
+            data.map(item => {
+              return (
+                  <TopPanel
+                      key={item.id}
+                      img={item.img}
+                      title={item.title}
+                      desc={item.desc}
+                  />
+              )
+            })
+          }
+        </div>
+
+        <div className="btc-box">
+          {/* btc走势 */}
+          <BtcChart/>
+        </div>
 
       </div>
   )
