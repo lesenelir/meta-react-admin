@@ -119,7 +119,11 @@ const GetCryptoApi = () => {
   return axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
 }
 
-
+/**
+ * 获取BTC历史price的API
+ * @returns {Promise<AxiosResponse<any>>}
+ * @constructor
+ */
 const GetBitcoinTrendApi = () => {
   return axios.get('https://api.coingecko.com/api/v3/coins/bitcoin/market_chart?vs_currency=usd&days=2000')
 }
