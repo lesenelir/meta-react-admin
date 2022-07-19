@@ -44,8 +44,11 @@ React 钩子来更新子组件的值，然后使用useContext此上下文的钩�
 
 
 context 传入一个值，但是不知道怎么去更新这个值，可以在context中传入一个对象
-搭配useState后，context才具备响应式
-useEffect 监控context.key的数据变化，变化后，从localStorage中读取数据，进行修改
+搭配useState后，context才具备响应式 ， 把useState的值和修改值方法作为一个对象的值和方法一起传递给Provider
+
+HomeRight：
+  useEffect 监控context.key的数据变化（变化的实质上的state的值），变化后，从localStorage中读取数据，进行修改
+
 
 
 antd的hook ： 比如有Form.useForm() 的hook
@@ -121,4 +124,35 @@ react-router-v6 路由守卫问题
 
 //
 工作台 实现Card组件的封装
+
+
+//
+子路由嵌套由Route标签的嵌套来实现
+渲染子路由则由Outlet标签了实现渲染子路由嵌套
+Outlet标签（嵌套子组件的占位符）：在父级路由下可以展示子级路由组件；子级路由组件渲染的内容展示在父级组件的页面内
+
+<Routes>
+    <Route path="/" element={<APP />}>
+        <Route index element={<Home />} >    /* / Outlet默认去渲染HOME组件 */
+        <Route path="list" element={<List />} >
+        <Route path="detail" element={<Detail />} >
+    </Route>
+</Routes>
+
+
+
+引入路由组件：
+BrowserRouter 相当于路由模式中的history模式，可以让url不带# （需要后端配置），服务器拿到整个url地址
+HashRouter 相当于路由模式中的hash模式，url携带#，服务器拿到的是#之前的url地址
+
+Routes
+
+Route
+
+
+
+//
+
+
+
 

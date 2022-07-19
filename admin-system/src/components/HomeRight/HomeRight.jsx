@@ -160,7 +160,6 @@ function HomeRight(props) {
             {/*<Outlet/>*/}
             {
               location.pathname === '/' ? <DashBoard/> : <Outlet/>
-
             }
           </div>
         </Content>

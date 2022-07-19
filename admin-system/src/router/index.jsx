@@ -26,7 +26,7 @@ const routerArr = [
 ]
 
 
-// 配置路由
+// 路由组件
 const MyRouter = () => {
   return (
       <BrowserRouter>
