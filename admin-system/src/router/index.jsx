@@ -1,5 +1,6 @@
 import Home from "../pages/Home/Home"
 import Loading from "../components/Loading/Loading"
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute"
 
 import {lazy, Suspense} from "react"
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
@@ -35,11 +36,27 @@ const MyRouter = () => {
             {
               routerArr.map((item,index) => {
                 return (
+                    // // 根路径做特殊处理 根路径需要路由鉴权
+                    // item.component === Home && !item.children
+                    //     ? <Route key={index} path={item.path} element={<PrivateRoute><item.component/></PrivateRoute>}/>
+                    //     :(
+                    //         // 不是根路径查看是否有子路由
+                    //         item.children
+                    //             // 有子路由 需要路由鉴权
+                    //             ? <Route key={index} path={item.path} element={<item.component/>}>
+                    //               {
+                    //                 item.children.map((e, i) => <Route key={i} path={e.path} element={<PrivateRoute><e.component/></PrivateRoute>}/>)
+                    //               }
+                    //               </Route>
+                    //             // 没有子路由
+                    //             : <Route key={index} path={item.path} element={<item.component/>}/>
+                    //     )
                     item.children
                     // 有子路由则遍历子路由
                     ? <Route key={index} path={item.path} element={<item.component/>}>
                         {
-                          item.children.map((e, i) => <Route key={i} path={e.path} element={<e.component/>}/>)
+                          // item.children.map((e, i) => <Route key={i} path={e.path} element={<e.component/>}/>)
+                          item.children.map((e, i) => <Route key={i} path={e.path} element={<PrivateRoute><e.component/></PrivateRoute>}/>)
                         }
                       </Route>
                     // 没有子路由则直接渲染
