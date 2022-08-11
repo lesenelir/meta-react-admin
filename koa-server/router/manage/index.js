@@ -1,4 +1,6 @@
 const Router = require('koa-router')
+
+const {query} = require('../../utils/utils')
 const login = require('./login')
 const register = require('./register')
 const info = require('./info')
@@ -7,8 +9,6 @@ const article = require('./article')
 const namelist = require('./namelist')
 
 const router = new Router()
-
-const {query} = require('../../utils/utils')
 
 // /manage
 router.get('/', async (ctx) => {

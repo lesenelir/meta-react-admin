@@ -5,13 +5,13 @@ const staticKoa = require('koa-static')
 const bodyParser = require('koa-bodyparser')
 const path = require('node:path')
 
-const app = new Koa()
-const router = new Router()
-
 const {host, port} = require('./utils/utils')
 const manage = require('./router/manage/index')
 const web = require('./router/web/index')
 const PageError = require('./router/404/404')
+
+const app = new Koa()
+const router = new Router()
 
 router.get('/', async (ctx) => {
   ctx.body = '首页'

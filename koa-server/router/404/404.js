@@ -1,7 +1,7 @@
-const Router = require('koa-router')
 const fs = require('node:fs')
 const path = require('node:path')
 const mime = require('mime-types')
+const Router = require('koa-router')
 
 const router = new Router()
 
