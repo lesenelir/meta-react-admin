@@ -14,6 +14,7 @@ const router = new Router()
 router.get('/', async (ctx) => {
   // 返回所有用户的数据 - 调用mysql
   // 调用query是异步的
+  // 保证先在数据库中query函数调用完后再把结果值存入body中
   let res = await new Promise((resolve, reject) => {
     query(`select * from user`, (err, data) => {
       if (err) reject(err)

@@ -126,8 +126,10 @@ function HomeRight(props) {
       <Layout className="site-right">
         {/*头部由左侧button 和 右侧下拉框组成*/}
         {/*右侧 头部 有全局变量key*/}
-        <Header key={contextData.key} className="site-right-header">
-          <Button
+        {/*<Header key={contextData.key} className="site-right-header">*/}
+        {/*舍弃key绑定，把头像、用户名、*/}
+        <Header className="site-right-header">
+        <Button
               style={{marginLeft: '12px', marginBottom: 16}}
               onClick={() => props.setCollapsed(!props.collapsed)}
           >
