@@ -65,7 +65,7 @@ cd koa-server
 npm run dev
 ```
 
-## Running screenshots
+## Running Screenshots
 
 - Login
 
@@ -101,7 +101,7 @@ Modern browsers supported, IE not supported
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |                         not support                          |                       last 2 versions                        |                       last 2 versions                        |                       last 2 versions                        |                       last 2 versions                        |
 
-## MIT license
+## MIT License
 
 MIT License
 
