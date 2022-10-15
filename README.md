@@ -105,7 +105,7 @@ Modern browsers supported, IE not supported
 
 MIT License
 
-Copyright (c) 2022 Lesenelir <<miaomiaobabyzy@gmail.com>>
+Copyright (c) 2022 Lesenelir <<hi@lesenelir.me>>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
